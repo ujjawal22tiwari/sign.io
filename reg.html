@@ -1,0 +1,184 @@
+
+
+
+ <!-- <!DOCTYPE html> -->
+ <html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sign Up</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: url("bg-png") no-repeat center  fixed;
+      background:url("background.png")no-repeat center  fixed;
+      background-size: cover;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .overlay {
+      position: absolute;
+      inset: 0;
+      background-color: rgba(0, 0, 0, 0.6);
+      z-index: 0;
+    }
+
+    .main-box {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      background: rgba(0, 0, 0, 0.8);
+      border-radius: 20px;
+      /* box-shadow: 0 0 30px rgba(0, 255, 255, 0.3); */
+      padding: 40px;
+      width: 90%;
+      max-width: 1000px;
+      justify-content: space-between;
+      align-items: center;
+      gap: 40px;
+    }
+
+
+
+
+
+    .form-box {
+      flex: 1;
+      color: white;
+    }
+
+    .form-box h1 {
+      font-size: 32px;
+      margin-bottom: 25px;
+    }
+
+    .form-box form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .form-box input {
+      padding: 12px;
+      margin-bottom: 16px;
+      border: none;
+      border-radius: 8px;
+      background: #111;
+      color: #fff;
+      font-size: 15px;
+      box-shadow: inset 0 0 5px #0ff3;
+    }
+
+    .form-box input:focus {
+      outline: none;
+      box-shadow: 0 0 10px #00ffff;
+    }
+
+    .form-box button {
+      padding: 12px;
+      background: #0077ff;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      box-shadow: 0 0 12px #0077ff80;
+    }
+
+    .form-box button:hover {
+      background: #0055cc;
+    }
+
+    .image-box {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .image-box img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 10px;
+      filter: drop-shadow(0 0 20px #00ffffaa);
+    }
+      h4{
+        text-align: center;
+        margin-top: 10px;
+      }
+      a{
+        text-decoration: none;
+        color: #2954aa;
+      }
+    @media (max-width: 850px) {
+      .main-box {
+        flex-direction: column;
+        text-align: center;
+        padding: 30px;
+      }
+
+      .image-box {
+        margin-top: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="overlay"></div>
+
+  <div class="main-box">
+    <!-- Left: Sign Up Form -->
+    <div class="form-box">
+      <h1>Create Account</h1>
+      <form>
+        <input type="text" placeholder="First Name" required />
+        <input type="text" placeholder="Last Name" required />
+       
+        <!-- <label for="emailInput">IITP Email:</label><br> -->
+    <input type="email" id="emailInput" placeholder="you@iitp.ac.in" required />
+    
+    <small id="error" style="color: red;"></small>
+        <input type="password" placeholder="Password" required />
+        <input type="password" placeholder="Confirm Password" required />
+        <button type="submit">Sign In</button>
+        <!-- <div class="footer" style="font-size: px;"> Already have an account?  <a  href="#" >Sign Up</a></div>  -->
+        <h4>Already have an account?  <a  href="#" >Sign Up</a>  </h4>
+      </form>
+    </div>
+
+    <!-- Right: Voting Image -->
+     <div class="image-box">
+      <img src="bgg-3.jpg" alt="Voting Box" />
+    </div>
+  </div>
+  <script>
+    const emailInput = document.getElementById('emailInput');
+    const error = document.getElementById('error');
+
+    emailInput.addEventListener('input', () => {
+      const email = emailInput.value.trim();
+
+      if (email === "") {
+        error.textContent = "";
+        emailInput.setCustomValidity(""); // clear message
+      }
+      else if (!email.endsWith("@iitp.ac.in")) {
+        error.textContent = "❌ Email must end with @iitp.ac.in";
+        emailInput.setCustomValidity("Invalid email domain");
+      } else {
+        error.textContent = "";
+        emailInput.setCustomValidity(""); // valid
+      }
+    });
+  </script>
+</body>
+</html>  
